@@ -8,6 +8,7 @@ Cloudinary.config({
     api_secret: process.env.CLOUNDRY_API_SECRET_KEY
 });
 
+var bodyParser = require('body-parser');
 const PhotoModel = require('./photo.detail.model');
 const cors = require('cors');
 const express = require('express');
@@ -15,6 +16,14 @@ const app = express();
 const morgan = require('morgan');
 
 app.use(cors());
+app.use(bodyParser.urlencoded({
+    extended: false,
+    parameterLimit: 100000,
+    limit: '50MB'
+}));
+app.use(bodyParser.json({
+    limit: '50MB'
+}));
 app.use(morgan('dev'));
 
 app.post('/storing_photos', async (req, res) => {
