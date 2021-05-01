@@ -14,7 +14,7 @@ const shouldCompress = (req, res) => {
 
 /* server settings */
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 app.use(compression({ filter: shouldCompress, level: 1 }));
 app.use(bodyParser.urlencoded({
     extended: false,

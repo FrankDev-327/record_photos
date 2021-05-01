@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
     CLOUNDRY_NAME: process.env.CLOUNDRY_NAME,
     CLOUNDRY_API_KEY: process.env.CLOUNDRY_API_KEY,

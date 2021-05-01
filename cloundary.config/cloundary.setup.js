@@ -1,7 +1,5 @@
 'use strict';
 
-require('dotenv').config();
-
 const {
     CLOUNDRY_API_KEY,
     CLOUNDRY_NAME,
