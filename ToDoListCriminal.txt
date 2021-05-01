@@ -1,3 +1,16 @@
+**url**
+https://criminal-cases.herokuapp.com
+
+post -> cases
+    photo: { type: String }, // imagen a capturar
+    stole_item: { type: String }, // cual fue el objeto robado
+    where_was_item: { type: String }, // en donde estaba en objeto que fue robado
+    folder_number: { type: String }, //por decirlo asi la carpeta de a que va a pertenecer la informacion
+    unit_number: { type: String }, // el ID de la unidad (no la cedula)
+    agency_number: { type: String }, // numero de la agencia de la cual la persona trabaja
+    detail_item: { type: String }, // la descripcion del objeto que fue robado
+
+
 Vistas a crear:
 1. imagen de fondo de la DIJ (por poner algo)
 2. menu de hamburguesa para accesar a las diferentes vistas

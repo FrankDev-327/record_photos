@@ -1,6 +1,7 @@
 'use strict';
 
-const { routeTrackCase } = require('./routers/index')
+const { routeTrackCase } = require('./routers/index');
+const winston = require('./configurations/winston');
 const bodyParser = require('body-parser');
 const compression = require('compression')
 const cors = require('cors');
@@ -14,7 +15,7 @@ const shouldCompress = (req, res) => {
 
 /* server settings */
 app.use(cors());
-app.use(morgan('combined'));
+app.use(morgan('combined', { stream: winston.stream }));
 app.use(compression({ filter: shouldCompress, level: 1 }));
 app.use(bodyParser.urlencoded({
     extended: false,
