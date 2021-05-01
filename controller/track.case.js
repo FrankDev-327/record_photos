@@ -36,7 +36,7 @@ async function insertDataAboutCase(req, res) {
     } catch (error) {
         return res.status(401).json({
             cd: 'No Success!',
-            msg: 'It has ocurred a error.'
+            msg: 'There has been an error.'
         });
     }
 }
@@ -47,9 +47,10 @@ async function listsDataAboutCases(req, res) {
         if (data.length <= 0) {
             return res.status(301).json({
                 cd: 'Fail',
-                msg: 'There is not cases stored.'
+                msg: 'There are no cases stored.'
             });
         }
+        
         return res.status(201).json({
             data,
             cd: 'Success!',
@@ -59,7 +60,7 @@ async function listsDataAboutCases(req, res) {
         console.log(error)
         return res.status(401).json({
             cd: 'No Success!',
-            msg: 'It has ocurred a error.'
+            msg: 'There has been an error.'
         });
     }
 }
@@ -72,20 +73,20 @@ async function caseInformation(req, res) {
         if (data == null) {
             return res.status(301).json({
                 cd: 'Fail',
-                msg: 'There is not information.'
+                msg: 'There is no information.'
             });
         }
 
         return res.status(201).json({
             data,
             cd: 'Success!',
-            msg: 'Photo information.'
+            msg: 'Case information.'
         });
 
     } catch (error) {
         return res.status(200).json({
             cd: 'No Success!',
-            msg: 'It has ocurred a error.'
+            msg: 'There has been an error.'
         });
     }
 }
