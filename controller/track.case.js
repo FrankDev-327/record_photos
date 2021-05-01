@@ -56,6 +56,7 @@ async function listsDataAboutCases(req, res) {
             msg: 'Cases information.'
         });
     } catch (error) {
+        console.log(error)
         return res.status(401).json({
             cd: 'No Success!',
             msg: 'It has ocurred a error.'
