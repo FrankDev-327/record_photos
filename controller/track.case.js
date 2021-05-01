@@ -43,7 +43,7 @@ async function insertDataAboutCase(req, res) {
 
 async function listsDataAboutCases(req, res) {
     try {
-        var data = await PhotoModel.find({}).select('_id photo stole_item').lean();
+        var data = await TrackCaseModel.find({}).select('_id photo stole_item').lean();
         if (data.length <= 0) {
             return res.status(301).json({
                 cd: 'Fail',
@@ -67,7 +67,7 @@ async function listsDataAboutCases(req, res) {
 async function caseInformation(req, res) {
     try {
         var _id = req.params._id;
-        var data = await PhotoModel.findOne({ _id: _id }).lean();
+        var data = await TrackCaseModel.findOne({ _id: _id }).lean();
 
         if (data == null) {
             return res.status(301).json({
