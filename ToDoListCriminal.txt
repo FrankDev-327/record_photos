@@ -1,0 +1,30 @@
+Vistas a crear:
+1. imagen de fondo de la DIJ (por poner algo)
+2. menu de hamburguesa para accesar a las diferentes vistas
+3. primera opcion, que pueda elegir poder tomar la foto, y los demas 
+   valores como:     
+    photo: { type: String }, // imagen a capturar
+    stole_item: { type: String }, // cual fue el objeto robado
+    where_was_item: { type: String }, // en donde estaba en objeto que fue robado
+    folder_number: { type: String }, //por decirlo asi la carpeta de a que va a pertenecer la informacion
+    unit_number: { type: String }, // el ID de la unidad (no la cedula)
+    agency_number: { type: String }, // numero de la agencia de la cual la persona trabaja
+    detail_item: { type: String }, // la descripcion del objeto que fue robado
+    
+4. vista en la que se pueda listar lo que ya se ha trabajado. ejemplo: la imagen y el nombre de lo que fue robado
+(stole_item)
+5. vista en donde poder ver todos los detalles del objecto robado. (cuando se toca uno de los que esta en la lista
+enviar al usuario a los detalles del mismo)
+6. (opcional) registro de usuario cosa que si se quiere mostrar solo lo que el usuario ha trabajado sea mas rapida
+la busqueda
+7. (opcional) login para seguridad de los datos que maneja
+
+
+
+      photo: img,
+                    detail_item: params.detail_item,
+                    stole_item: params.stole_item,
+                    where_was_item: params.where_was_item,
+                    folder_number: params.folder_number,
+                    unit_number: params.unit_number,
+                    agency_number: params.agency_number,

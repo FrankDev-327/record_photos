@@ -1,9 +1,8 @@
 'use strict';
 
-require('dotenv').config();
-
-const mongoose = require('mongoose');
 const app = require('./app');
+const mongoose = require('mongoose');
+const { PORT, DATABASE_MONGO_URL } = require('./configurations/env.config');
 
 mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
@@ -12,14 +11,15 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect(process.env.CONN, (err, res) => {
+mongoose.connect(DATABASE_MONGO_URL, (err) => {
    if (err) {
-      console.log('Ocurrió un error: -> ' + err)
+      console.log('It has happened a error.')
+      console.log(err)
       return;
    } else {
       try {
-         app.listen(process.env.PORT, () => {
-            console.log('Conectao al puerto: ' + process.env.PORT);
+         app.listen(PORT, () => {
+            console.log('Server is running in port: ' + PORT);
          });
       } catch (error) {
          console.log('*****' + error.message + '*****')

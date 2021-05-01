@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PhotoDetailModel = Schema({
+const TrackCasesModel = Schema({
     photo: { type: String },
     stole_item: { type: String },
     where_was_item: { type: String },
@@ -14,5 +14,5 @@ const PhotoDetailModel = Schema({
     date_create_info: { type: Date, default: new Date() }
 });
 
-const PhotoDetails = mongoose.model('PhotoDetails', PhotoDetailModel);
-module.exports = PhotoDetails;
+const TrackCases = mongoose.model('TrackCases', TrackCasesModel);
+module.exports = TrackCases;
