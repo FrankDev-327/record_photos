@@ -32,12 +32,10 @@ enviar al usuario a los detalles del mismo)
 la busqueda
 7. (opcional) login para seguridad de los datos que maneja
 
-
-
-      photo: img,
-                    detail_item: params.detail_item,
-                    stole_item: params.stole_item,
-                    where_was_item: params.where_was_item,
-                    folder_number: params.folder_number,
-                    unit_number: params.unit_number,
-                    agency_number: params.agency_number,
+photo: img,
+            detail_item: params.detail_item,
+            stole_item: params.stole_item,
+            where_was_item: params.where_was_item,
+            folder_number: params.folder_number,
+            unit_number: params.unit_number,
+            agency_number: params.agency_number,
