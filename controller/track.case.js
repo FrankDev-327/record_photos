@@ -22,6 +22,7 @@ async function insertDataAboutCase(req, res) {
                 });
 
                 var data = await trackCase.save();
+                console.log(data)
                 if (data) {
                     return res.status(301).json({
                         cd: 'No Success!',
@@ -84,6 +85,7 @@ async function caseInformation(req, res) {
         });
 
     } catch (error) {
+        console.log(error)
         return res.status(200).json({
             cd: 'No Success!',
             msg: 'There has been an error.'
