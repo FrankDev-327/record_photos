@@ -9,7 +9,7 @@ async function insertDataAboutCase(req, res) {
         params.img = 'data:image/jpeg;base64,' + params.img;
         Cloudinary.uploader.upload(params.img,
             async function (err, result) {
-                if (err !== undefined) {
+                if (err !== undefined && err !== undefined) {
                     console.log(err)
                     return res.status(301).json({
                         cd: 'No Success!',
@@ -23,7 +23,7 @@ async function insertDataAboutCase(req, res) {
                 });
 
                 var data = await trackCase.save();
-                if (data) {
+                if (data == null || data == undefined) {
                     return res.status(301).json({
                         cd: 'No Success!',
                         msg: 'It was not possible to store the information. Try again!.'
