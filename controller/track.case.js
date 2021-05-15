@@ -9,6 +9,7 @@ async function insertDataAboutCase(req, res) {
         Cloudinary.uploader.upload(params.img,
             async function (err, result) {
                 if (err) {
+                    console.log(err)
                     return res.status(301).json({
                         cd: 'No Success!',
                         message: 'It was not possible to store the image. Try again.'
@@ -34,6 +35,7 @@ async function insertDataAboutCase(req, res) {
                 });
             });
     } catch (error) {
+        console.log(error)
         return res.status(401).json({
             cd: 'No Success!',
             msg: 'There has been an error.'
