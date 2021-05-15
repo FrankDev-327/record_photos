@@ -9,7 +9,7 @@ async function insertDataAboutCase(req, res) {
         params.img = 'data:image/jpeg;base64,' + params.img;
         Cloudinary.uploader.upload(params.img,
             async function (err, result) {
-                if (!err) {
+                if (err !== undefined) {
                     console.log(err)
                     return res.status(301).json({
                         cd: 'No Success!',
