@@ -6,6 +6,7 @@ const { Cloudinary } = require('../cloundary.config/cloundary.setup');
 async function insertDataAboutCase(req, res) {
     try {
         var params = req.body;
+        params.img = 'data:image/jpeg;base64,' + params.img;
         Cloudinary.uploader.upload(params.img,
             async function (err, result) {
                 if (err) {
@@ -46,7 +47,7 @@ async function insertDataAboutCase(req, res) {
 async function listsDataAboutCases(req, res) {
     try {
         var data = await TrackCaseModel.find({})
-        .select('_id photo stole_item').lean();
+            .select('_id photo stole_item').lean();
 
         if (data.length <= 0) {
             return res.status(301).json({
@@ -54,7 +55,7 @@ async function listsDataAboutCases(req, res) {
                 msg: 'There are no cases stored.'
             });
         }
-        
+
         return res.status(201).json({
             data,
             cd: 'Success!',
