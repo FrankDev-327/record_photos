@@ -4,7 +4,7 @@ const app = require('./app');
 const mongoose = require('mongoose');
 const { PORT, DATABASE_MONGO_URL } = require('./configurations/env.config');
 console.log(DATABASE_MONGO_URL)
-
+//
 mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
 mongoose.set('useCreateIndex', true);
