@@ -5,7 +5,7 @@ const { Cloudinary } = require('../cloundary.config/cloundary.setup');
 
 async function insertDataAboutCase(req, res) {
     try {
-        var params = req.body;
+        const params = req.body;
         const trackCase = new TrackCaseModel({
             ...params, photo: ''
         });
@@ -17,14 +17,29 @@ async function insertDataAboutCase(req, res) {
                 msg: 'It was not possible to store the information. Try again!.'
             });
         }
+
         return res.status(200).json({
             cd: 'Success!',
             msg: 'The information was stored correctly!'
         });
-//
 
-        //params.img = 'data:image/jpeg;base64,' + params.img;
-        /*Cloudinary.uploader.upload(params.img, async function (err, result) {
+    } catch (error) {
+        console.log(error)
+        return res.status(401).json({
+            cd: 'No Success!',
+            msg: 'There has been an error.'
+        });
+    }
+}
+
+async function uploadAdnUpdateCaseImage(req, res) {
+    try {
+        const params = req.body;
+        const newRG = { new: true };
+        const _id = { _id: req.params._id };
+        params.img = 'data:image/jpeg;base64,' + params.img;
+
+        Cloudinary.uploader.upload(params.img, async function (err, result) {
             if (err !== undefined && err !== undefined) {
                 console.log(err)
                 return res.status(301).json({
@@ -33,23 +48,21 @@ async function insertDataAboutCase(req, res) {
                 });
             }
 
-            const photoFromCloud = result.secure_url;
-            const trackCase = new TrackCaseModel({
-                ...params, photo: photoFromCloud
-            });
+            const setPhoto = { photo: result.secure_url };
+            const trackCase = await TrackCaseModel.findByIdAndUpdate(_id, setPhoto, newRG);
 
             const data = await trackCase.save();
             if (data == null || data == undefined) {
                 return res.status(301).json({
                     cd: 'No Success!',
-                    msg: 'It was not possible to store the information. Try again!.'
+                    msg: 'It was not possible to update the photo. Try again!.'
                 });
             }
             return res.status(200).json({
                 cd: 'Success!',
-                msg: 'The information was stored correctly!'
+                msg: 'The information was updated correctly!'
             });
-        });*/
+        });
 
     } catch (error) {
         console.log(error)
@@ -114,6 +127,7 @@ async function caseInformation(req, res) {
 }
 
 module.exports = {
+    uploadAdnUpdateCaseImage,
     caseInformation,
     insertDataAboutCase,
     listsDataAboutCases
