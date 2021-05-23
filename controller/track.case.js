@@ -21,7 +21,7 @@ async function insertDataAboutCase(req, res) {
             cd: 'Success!',
             msg: 'The information was stored correctly!'
         });
-
+//
 
         //params.img = 'data:image/jpeg;base64,' + params.img;
         /*Cloudinary.uploader.upload(params.img, async function (err, result) {
