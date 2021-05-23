@@ -6,6 +6,7 @@ const compression = require('compression')
 const cors = require('cors');
 const express = require('express');
 const app = express();
+const { NODE_ENV } = require('./configurations/env.config')
 const morgan = require('morgan');
 const shouldCompress = (req, res) => {
     if (req.headers['x-no-compression']) return false;
@@ -14,8 +15,14 @@ const shouldCompress = (req, res) => {
 //---
 /* server settings */
 app.use(cors());
-app.use(morgan('dev'));
-app.use(compression({ filter: shouldCompress, level: 1 }));
+
+if (NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+app.use(compression({
+    level: 1,
+    filter: shouldCompress
+}));
 app.use(bodyParser.urlencoded({
     extended: false,
     parameterLimit: 1000,
