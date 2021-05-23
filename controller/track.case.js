@@ -31,7 +31,7 @@ async function insertDataAboutCase(req, res) {
         });
     }
 }
-
+//
 async function uploadAdnUpdateCaseImage(req, res) {
     try {
         const params = req.body;
