@@ -6,8 +6,25 @@ const { Cloudinary } = require('../cloundary.config/cloundary.setup');
 async function insertDataAboutCase(req, res) {
     try {
         var params = req.body;
-        params.img = 'data:image/jpeg;base64,' + params.img;
-        Cloudinary.uploader.upload(params.img, async function (err, result) {
+        const trackCase = new TrackCaseModel({
+            ...params, photo: ''
+        });
+
+        const data = await trackCase.save();
+        if (data == null || data == undefined) {
+            return res.status(301).json({
+                cd: 'No Success!',
+                msg: 'It was not possible to store the information. Try again!.'
+            });
+        }
+        return res.status(200).json({
+            cd: 'Success!',
+            msg: 'The information was stored correctly!'
+        });
+
+
+        //params.img = 'data:image/jpeg;base64,' + params.img;
+        /*Cloudinary.uploader.upload(params.img, async function (err, result) {
             if (err !== undefined && err !== undefined) {
                 console.log(err)
                 return res.status(301).json({
@@ -32,7 +49,7 @@ async function insertDataAboutCase(req, res) {
                 cd: 'Success!',
                 msg: 'The information was stored correctly!'
             });
-        });
+        });*/
 
     } catch (error) {
         console.log(error)
