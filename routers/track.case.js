@@ -2,11 +2,16 @@
 
 const express = require('express');
 const router = express.Router();
-const { TrackCaseController } = require('../controller/index');
-//--
-router.post('/case', TrackCaseController.insertDataAboutCase);
-router.get('/cases', TrackCaseController.listsDataAboutCases);
-router.get('/case/:_id', TrackCaseController.caseInformation);
-router.put('/case/:_id', TrackCaseController.uploadAdnUpdateCaseImage);
+const {
+    caseInformation,
+    insertDataAboutCase,
+    listsDataAboutCases,
+    uploadAdnUpdateCaseImage
+} = require('../controller/track.case');
+
+router.post('/case', insertDataAboutCase);
+router.get('/cases', listsDataAboutCases);
+router.get('/case/:_id', caseInformation);
+router.put('/case/:_id', uploadAdnUpdateCaseImage);
 
 module.exports = router;
